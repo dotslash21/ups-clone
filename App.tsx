@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import CustomerScreen from "./screens/CustomerScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import RootNavigator from "./navigator/RootNavigator";
 
 export default function App() {
   return (
     <>
-      <CustomerScreen />
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
       <StatusBar style="auto" />
     </>
   );

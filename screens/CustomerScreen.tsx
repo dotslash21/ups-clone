@@ -1,11 +1,4 @@
-import {
-  ScrollView,
-  Image,
-  StyleProp,
-  ViewStyle,
-  TextInput,
-  View,
-} from "react-native";
+import { ScrollView, Image, TextInput, View } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import {
   CompositeNavigationProp,
@@ -15,6 +8,9 @@ import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import { TabStackParamList } from "../navigator/TabNavigator";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigator/RootNavigator";
+import { useQuery } from "@apollo/client";
+import { GET_CUSTOMERS } from "../graphql/queries";
+import CustomerCard from "../components/CustomerCard";
 
 export type CustomerScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabStackParamList, "Customers">,
@@ -24,6 +20,7 @@ export type CustomerScreenNavigationProp = CompositeNavigationProp<
 const CustomersScreen = () => {
   const navigation = useNavigation<CustomerScreenNavigationProp>();
   const [input, setInput] = useState<string>("");
+  const { loading, data, error } = useQuery(GET_CUSTOMERS);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -45,6 +42,21 @@ const CustomersScreen = () => {
           onChangeText={setInput}
           className="border-b-2 border-gray-300 pb-1"
         />
+      </View>
+
+      <View className="pb-4">
+        {data?.getCustomers
+          ?.filter((customer: CustomerList) =>
+            customer.value.name.includes(input)
+          )
+          .map(({ name: userId, value: { email, name } }: CustomerResponse) => (
+            <CustomerCard
+              key={userId}
+              userId={userId}
+              email={email}
+              name={name}
+            />
+          ))}
       </View>
     </ScrollView>
   );

@@ -5,7 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5001/api/ups-clone",
+  uri: "http://192.168.0.115:5001/api/ups-clone",
   cache: new InMemoryCache(),
 });
 

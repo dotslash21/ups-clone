@@ -12,7 +12,7 @@ export const GET_CUSTOMERS = gql`
   }
 `;
 
-const GET_ORDERS = gql`
+export const GET_ORDERS = gql`
   query GetOrders {
     getOrders {
       name
@@ -43,7 +43,7 @@ const GET_ORDERS = gql`
   }
 `;
 
-const GET_TRACKING_ITEMS = gql`
+export const GET_TRACKING_ITEMS = gql`
   query GetTrackingItems {
     getTrackingItems {
       value {

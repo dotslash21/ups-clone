@@ -16,7 +16,15 @@ const CustomerCard = ({ userId, email, name }: Props) => {
   const navigation = useNavigation<CustomerScreenNavigationProp>();
 
   return (
-    <TouchableOpacity className="bg-white mx-3 mt-3 p-5 rounded-lg justify-between">
+    <TouchableOpacity
+      className="bg-white mx-3 mt-3 p-5 rounded-lg justify-between"
+      onPress={() =>
+        navigation.navigate("MyModal", {
+          userId,
+          name,
+        })
+      }
+    >
       <View className="flex-row justify-between">
         <View>
           <Text className="text-2xl font-bold">{name}</Text>

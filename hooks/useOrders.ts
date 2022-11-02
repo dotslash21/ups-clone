@@ -18,7 +18,7 @@ const useOrders = () => {
       Address: value.Address,
       City: value.City,
       Lat: value.Lat,
-      Long: value.Long,
+      Lng: value.Lng,
     }));
 
     setOrders(orders);

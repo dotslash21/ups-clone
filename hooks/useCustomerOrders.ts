@@ -18,7 +18,7 @@ const useCustomerOrders = (userId: string) => {
       Address: value.Address,
       City: value.City,
       Lat: value.Lat,
-      Long: value.Long,
+      Lng: value.Lng,
     }));
 
     const customerOrders = orders.filter(

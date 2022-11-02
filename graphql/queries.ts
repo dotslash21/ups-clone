@@ -20,7 +20,7 @@ export const GET_ORDERS = gql`
         Address
         City
         Lat
-        Long
+        Lng
         carrier
         createdAt
         shippingCost

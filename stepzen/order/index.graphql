@@ -6,7 +6,7 @@ type Order {
   Address: String
   City: String
   Lat: Float
-  Long: Float
+  Lng: Float
   trackingItems: TrackingItems
     @materializer(
       query: "getTrackingItemsById"
